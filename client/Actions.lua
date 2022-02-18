@@ -49,12 +49,8 @@ AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
 
-
 local blips = {
-
     {title="Orpailleurs", colour=46, id=618, x =  1077.48, y = -1973.41, z =  31.47}
-     
-
 }
      
 Citizen.CreateThread(function()
@@ -81,37 +77,14 @@ function TimeToGo(point_x, point_y, point_z)
     local temps = nil
     local time_ia_calc = 0.0370
 
-    print(distance)
-
 if distance >= 500 then
     coef = 1.1
-    print(coef)
-    print('Good')
 else
     coef = 1.0
 end
-
-    -- 27s 700 = 0.03/s 
-
     temps_final = distance * coef * time_ia_calc
-
-    print(temps_final)
-
     return temps_final
-
 end
-
-RegisterCommand("point", function()
-    
-    TimeToGo(1045, 3070.74, 41.82) 
-
-end, false)
-
-RegisterCommand("menu", function()
-    
-    F6Menu()
-
-end, false)
 
 function round(num, dec)
     local mult = 10^(dec or 0)
@@ -204,8 +177,6 @@ function F6Menu()
                     end
                 end)
                 RageUI.Separator("↓ ~y~ Annonces ~s~↓")
-
-                
                 RageUI.ButtonWithStyle("Annonces ~g~Ouvertures",nil, {RightLabel = "→ "}, true, function(Hovered, Active, Selected)
                     if Selected then       
                         TriggerServerEvent('Annonces_Ouvertures')
@@ -226,7 +197,6 @@ function F6Menu()
                             DisableAllControlActions(0)
                             Wait(0)
                         end
-
                         if (GetOnscreenKeyboardResult()) then
                             local result = GetOnscreenKeyboardResult()
                             print(result)    
@@ -255,12 +225,8 @@ function F6Menu()
                     else
                         sendNotification('~r~ Veuillez monter dans un véhicule.')
                     end
-
-
                 end
-            
             end)
-
 
             RageUI.ButtonWithStyle("Point de traitement", nil, {RightBadge = RageUI.BadgeStyle.Car}, true, function(h, a, s)
                 if s then
@@ -276,13 +242,8 @@ function F6Menu()
                     else
                         sendNotification('~r~ Veuillez monter dans un véhicule.')
                     end
-
-
                 end
-            
             end)
-
-
 
             RageUI.ButtonWithStyle("Point de traitement 2", nil, {RightBadge = RageUI.BadgeStyle.Car}, true, function(h, a, s)
                 if s then
@@ -298,12 +259,8 @@ function F6Menu()
                     else
                         sendNotification('~r~ Veuillez monter dans un véhicule.')
                     end
-
-
                 end
-            
             end)
-
 
             RageUI.ButtonWithStyle("Point de vente", nil, {RightBadge = RageUI.BadgeStyle.Car}, true, function(h, a, s)
                 if s then
@@ -319,37 +276,18 @@ function F6Menu()
                     else
                         sendNotification('~r~ Veuillez monter dans un véhicule.')
                     end
-
-
-                end
-            
+                end   
             end)
-
-
         end)
-
-
     end
-
-
-    Citizen.Wait(100)
-
+    Citizen.Wait(0)
 end
-
-
 
 Keys.Register('F6', 'Orpailleurs', 'Menu Oprailleurs', function()
 	if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         F6Menu()
 	end
 end)
-
-
-RegisterCommand("lan", function()
-    
-    print(_U('test'))    
-end)
-
 
 function Vestiaire()
         local Vestiaire_Orpailleurs = RageUI.CreateMenu("Orpailleurs", "Menu Orpailleurs")
@@ -372,7 +310,6 @@ function Vestiaire()
                     end
                     end)
                 RageUI.Separator("↓ ~y~ Tenue Disponibles  ~s~↓")
-
                 if ESX.PlayerData.job.grade_name == 'boss' then 
                     RageUI.ButtonWithStyle("Tenue Patron", nil, {RightBadge = RageUI.BadgeStyle.Clothes}, true, function(h, a, s)
                         if s then
@@ -387,7 +324,6 @@ function Vestiaire()
                         end
                     end)
                 end
-
                 if ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'co-pdg' then 
                     RageUI.ButtonWithStyle("Tenue Adjoint", nil, {RightBadge = RageUI.BadgeStyle.Clothes} , true, function(h, a, s)
                         if s then
@@ -402,8 +338,6 @@ function Vestiaire()
                         end
                     end)
                 end
-
-
                 if ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'co-pdg'  or ESX.PlayerData.job.grade_name == 'manager' then 
                     RageUI.ButtonWithStyle("Tenue Manager", nil, {RightBadge = RageUI.BadgeStyle.Clothes}, true, function(h, a, s)
                         if s then
@@ -418,8 +352,6 @@ function Vestiaire()
                         end
                     end)
                 end
-
-
                 if ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'co-pdg'  or ESX.PlayerData.job.grade_name == 'manager' or ESX.PlayerData.job.grade_name == 'worker2' or ESX.PlayerData.job.grade_name == 'worker' then 
                     RageUI.ButtonWithStyle("Tenue Employé", nil, {RightBadge = RageUI.BadgeStyle.Clothes}, true, function(h, a, s)
                         if s then
@@ -435,11 +367,7 @@ function Vestiaire()
                             RageUI.CloseAll()
                         end
                     end)
-                end
--- Clothes
-
-                    
-                        
+                end       
                 end, function()end, 1)
 
                     if not RageUI.Visible(Vestiaire_Orpailleurs) then
@@ -450,17 +378,14 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        local Timer = 500
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1077.66, -1972.5, 31.47)
         if distance <= 1.2 then
-            Timer = 0
             DrawMarker(2, 1077.66, -1972.5, 31.35,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 0.75, 0.75, 0.75, 206, 185, 117 , 255, false, true, p19, false)
         end
             if distance <= 1.2 then
                 FreezeEntityPosition(PlayerPedId(), false)
-                Timer = 0   
                     AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour accèder aux vestiaires.')
                     DisplayHelpTextThisFrame("TEST", false)
                     if IsControlJustPressed(1,51) then
@@ -469,7 +394,7 @@ Citizen.CreateThread(function()
                 end
                 end
             end 
-        Citizen.Wait(Timer)
+        Citizen.Wait(0)
     end
 end)
 
@@ -541,17 +466,15 @@ end
 
 end
 
-
-itemstock = {}
 function RetireItem()
-    local StockOrpa = RageUI.CreateMenu("Coffre", "Menu Intéraction..")
-    StockOrpa:SetRectangleBanner(228, 191, 10)
+    local Menu_Coffre_1 = RageUI.CreateMenu("Coffre", "Menu Intéraction..")
+    Menu_Coffre_1:SetRectangleBanner(228, 191, 10)
     ESX.TriggerServerCallback('orpailleur_job:getItemsStock', function(items) 
     itemstock = items
-    RageUI.Visible(StockOrpa, not RageUI.Visible(StockOrpa))
-        while StockOrpa do
+    RageUI.Visible(Menu_Coffre_1, not RageUI.Visible(Menu_Coffre_1))
+        while Menu_Coffre_1 do
             Citizen.Wait(0)
-                RageUI.IsVisible(StockOrpa, true, true, true, function()
+                RageUI.IsVisible(Menu_Coffre_1, true, true, true, function()
                         for k,v in pairs(itemstock) do 
                             if v.count ~= 0 then
                             RageUI.ButtonWithStyle(v.label, nil, {RightLabel = v.count}, true, function(Hovered, Active, Selected)
@@ -565,13 +488,12 @@ function RetireItem()
                     end
                 end, function()
                 end)
-            if not RageUI.Visible(StockOrpa) then
-            StockOrpa = RMenu:DeleteType("Coffre", true)
+            if not RageUI.Visible(Menu_Coffre_1) then
+            Menu_Coffre_1 = RMenu:DeleteType("Coffre", true)
         end
     end
 end)
 end
-
 
 function DeposeItem()
     local Menu_Coffre_2 = RageUI.CreateMenu("Coffre", "Deposer un item")
@@ -606,17 +528,14 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        local Timer = 500
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1074.16, -2010.35, 32.08)
         if distance <= 1.2 then
-            Timer = 0
             DrawMarker(2, 1074.16, -2010.35, 32.08,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 0.75, 0.75, 0.75, 206, 185, 117 , 255, false, true, p19, false)
         end
             if distance <= 1.2 then
                 FreezeEntityPosition(PlayerPedId(), false)
-                Timer = 0   
                     AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour accèder au coffre.')
                     DisplayHelpTextThisFrame("TEST", false)
                     if IsControlJustPressed(1,51) then
@@ -625,15 +544,12 @@ Citizen.CreateThread(function()
                 end
                 end
             end 
-        Citizen.Wait(Timer)
+        Citizen.Wait(0)
     end
 end)
 
-
-
 Citizen.CreateThread(function()
     while true do
-        local Timer = 500
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1075.28, -1948.14, 31.01-0.94)
@@ -643,7 +559,6 @@ Citizen.CreateThread(function()
         end
             if distance <= 2 then
                 FreezeEntityPosition(PlayerPedId(), false)
-                Timer = 0   
                     AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour ranger le véhicule.')
                     DisplayHelpTextThisFrame("TEST", false)
                     if IsControlJustPressed(1,51) then
@@ -653,13 +568,9 @@ Citizen.CreateThread(function()
                 end
                 end
             end 
-        Citizen.Wait(Timer)
+        Citizen.Wait(0)
     end
 end)
-
-
-
---1077.01, -1959, 31.04
 
 Citizen.CreateThread(function()
 
@@ -681,31 +592,25 @@ end)
 
 function CreateCar(vehicleName)
     local player = PlayerPedId()
-
     local vehiculeHash = GetHashKey(vehicleName)
 
     RequestModel(vehiculeHash)
     while not HasModelLoaded(vehiculeHash) do Wait(1) end
-
     local Vehicle = CreateVehicle(vehiculeHash, 1065.74, -1962.00, 32.01, 0, true, false)
 
     SetVehicleEngineOn(Vehicle, true, true, false)
     SetPedIntoVehicle(player, Vehicle, -1)
     SetVehicleRadioEnabled(Vehicle, false)
-
-
     sendNotification("~b~ Bonne route :)")
 
 end
 
 Citizen.CreateThread(function(source)
     while true do
-        local Timer = 500
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
             local playerdistance = GetEntityCoords(GetPlayerPed(-1), false)
             local distancetoplayer = Vdist(playerdistance.x, playerdistance.y, playerdistance.z,1082.34, -1960.3, 32.82)
                 if distancetoplayer <= 1.5 then
-                    Timer = 0   
                             AddTextEntry("veh",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour prendre ton ~b~véhicule~s~.')
                             DisplayHelpTextThisFrame("veh", false)
                             if IsControlJustPressed(1,51) then
@@ -713,7 +618,7 @@ Citizen.CreateThread(function(source)
                             end
                 end
         end 
-        Citizen.Wait(Timer)
+        Citizen.Wait(0)
     end
 end)
 
@@ -731,16 +636,35 @@ function Menu_Vehicle()
 
 
         RageUI.Separator("↓ ~y~ Vehicules  ~s~↓")
+        RageUI.ButtonWithStyle("Mule", nil, {RightBadge = RageUI.BadgeStyle.Car}, true, function(h, a, s)
+            if s then
+                RageUI.CloseAll()
+                CreateCar("mule3")
+            end
+        end)
+
+        if ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'co-pdg' or ESX.PlayerData.job.grade_name == 'worker2' or ESX.PlayerData.job.grade_name == 'manager' then 
+
+
         RageUI.ButtonWithStyle("Bison", nil, {RightBadge = RageUI.BadgeStyle.Car}, true, function(h, a, s)
             if s then
                 RageUI.CloseAll()
                 CreateCar("Bison")
             end
         end)
-                 
-       -- if ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'co-pdg' then 
-        --end
 
+    end
+
+    if ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'co-pdg' then 
+
+        RageUI.ButtonWithStyle("Voiture du Patron", nil, {RightBadge = RageUI.BadgeStyle.Car}, true, function(h, a, s)
+            if s then
+                RageUI.CloseAll()
+                CreateCar("baller3")
+            end
+        end)
+
+    end
         end, function()end, 1)
 
         if not RageUI.Visible(Menu_Vehicle) then
@@ -748,7 +672,11 @@ function Menu_Vehicle()
             FreezeEntityPosition(PlayerPedId(), false)
     end
 end
-    Citizen.Wait(100)
+    Citizen.Wait(0)
 end
 
 
+RegisterCommand("lan", function()
+    
+    print(_U('test'))    
+end)

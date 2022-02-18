@@ -4,14 +4,12 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('esx_society:registerSociety', 'orpailleurs', 'orpailleurs', 'society_orpailleur', 'society_orpailleur', 'society_orpailleur', {type = 'private'})
 
-
 ----------- INVENTAIRE / COFFRE -------------------
 ESX.RegisterServerCallback('orpailleur_job:getItemsStock', function(source, cb)
 	TriggerEvent('esx_addoninventory:getSharedInventory', 'society_orpailleur', function(inventory)
 		cb(inventory.items)
     end)
 end)
-
 
 -- RETIRER ---
 RegisterNetEvent('orpailleur_job:getStockItem')
@@ -97,13 +95,13 @@ AddEventHandler('traitement_pepites', function()
     local pepites = xPlayer.getInventoryItem('pepites').count
     local powder = xPlayer.getInventoryItem('powder').count
 
-    if powder > 50 then
+    if powder > 100 then
         TriggerClientEvent('esx:showNotification', source, 'Tu ne peux plus porter de ~y~ poudres d\'or.')
-    elseif pepites < 10 then
+    elseif pepites < 5 then
         TriggerClientEvent('esx:showNotification', source, 'Tu n\'as plus assez de ~y~pépites ~w~pour les fondres.')
     else
-        xPlayer.removeInventoryItem('pepites', 10)
-        xPlayer.addInventoryItem('powder', 5)    
+        xPlayer.removeInventoryItem('pepites', 2)
+        xPlayer.addInventoryItem('powder', 2)    
     end
 end)
 
@@ -117,11 +115,11 @@ AddEventHandler('traitement_powder', function()
 
     if lingot > 50 then
         TriggerClientEvent('esx:showNotification', source, 'Ton invetaire est ~r~plein~w~...de ~y~lingots ~w~!')
-    elseif powder < 10 then
+    elseif powder < 3 then
         TriggerClientEvent('esx:showNotification', source, 'Tu n\'as plus assez de ~y~poudre ~w~pour traiter.')
     else
-        xPlayer.removeInventoryItem('powder', 10)
-        xPlayer.addInventoryItem('lingot', 5)    
+        xPlayer.removeInventoryItem('powder', 3)
+        xPlayer.addInventoryItem('lingot', 3)    
         TriggerClientEvent('esx:showNotification', source, "~y~+5~y~ lingots.")
 
     end
