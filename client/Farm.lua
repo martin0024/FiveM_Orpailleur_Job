@@ -57,6 +57,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, -347.7, 3013.79, 14.25)
@@ -64,7 +65,7 @@ Citizen.CreateThread(function()
             DrawMarker(1, -347.7, 3013.79, 14.05,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
             if distance <= 1.5 then
-                Timer = 0   
+                Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour récolter ~y~les pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
                         if IsControlJustPressed(1,51) then
@@ -76,12 +77,13 @@ Citizen.CreateThread(function()
                     end   
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
 Citizen.CreateThread(function()
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1114.02, -2004.82, 34.25)
@@ -89,7 +91,7 @@ Citizen.CreateThread(function()
             DrawMarker(1, 1114.02, -2004.82, 34.25,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
             if distance <= 1.5 then
-                Timer = 0   
+                Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter vos ~y~pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
                         if IsControlJustPressed(1,51) then
@@ -100,12 +102,13 @@ Citizen.CreateThread(function()
                     end   
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
 Citizen.CreateThread(function()
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1109.98, -2008.21, 30.15)
@@ -113,7 +116,7 @@ Citizen.CreateThread(function()
             DrawMarker(1, 1109.98, -2008.21, 30.15,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
             if distance <= 1.5 then
-                Timer = 0   
+                Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter votre ~y~poudre d\'or.')
                         DisplayHelpTextThisFrame("TEST", false)
                         if IsControlJustPressed(1,51) then
@@ -124,7 +127,7 @@ Citizen.CreateThread(function()
                     end   
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
@@ -233,10 +236,12 @@ end
 
 Citizen.CreateThread(function(source)
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, -63.78, -2519.98, 7.4-0.94)
             if distance <= 1.5 then
+                Time = 0
                         RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour vendre vos ~y~lingots d\'or", time_display = 1 })
                         DisplayHelpTextThisFrame("TEST", false)
                         if IsControlJustPressed(1,51) then
@@ -269,7 +274,7 @@ Citizen.CreateThread(function(source)
                     end   
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 

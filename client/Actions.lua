@@ -54,7 +54,6 @@ local blips = {
 }
      
 Citizen.CreateThread(function()
-
    for _, info in pairs(blips) do
      info.blip = AddBlipForCoord(info.x, info.y, info.z)
      SetBlipSprite(info.blip, info.id)
@@ -77,13 +76,13 @@ function TimeToGo(point_x, point_y, point_z)
     local temps = nil
     local time_ia_calc = 0.0370
 
-if distance >= 500 then
-    coef = 1.1
-else
-    coef = 1.0
-end
-    temps_final = distance * coef * time_ia_calc
-    return temps_final
+    if distance >= 500 then
+        coef = 1.1
+    else
+        coef = 1.0
+    end
+        temps_final = distance * coef * time_ia_calc
+        return temps_final
 end
 
 function round(num, dec)
@@ -91,8 +90,8 @@ function round(num, dec)
     return math.floor(num * mult + 0.5) / mult
   end
 
-  function startAnimation(lib, anim)
-    ESX.Streaming.RequestAnimDict(lib, function()
+function startAnimation(lib, anim)
+     ESX.Streaming.RequestAnimDict(lib, function()
         TaskPlayAnim(PlayerPedId(), lib, anim, 8.0, -8.0, -1, 0, 0.0, false, false, false)
     end)
 end
@@ -205,7 +204,7 @@ function F6Menu()
                     end
                 end)
             end) 
-        Citizen.Wait(0)
+        Citizen.Wait(10)
 
         RageUI.IsVisible(SubMenu_GPS, true, true, true, function()
             RageUI.Separator("↓ ~b~    Itinéraires   ~s~↓")
@@ -280,7 +279,7 @@ function F6Menu()
             end)
         end)
     end
-    Citizen.Wait(0)
+    Citizen.Wait(10)
 end
 
 Keys.Register('F6', 'Orpailleurs', 'Menu Oprailleurs', function()
@@ -295,7 +294,7 @@ function Vestiaire()
 
         RageUI.Visible(Vestiaire_Orpailleurs, not RageUI.Visible(Vestiaire_Orpailleurs))
                 while Vestiaire_Orpailleurs do
-                Citizen.Wait(0)
+                Citizen.Wait(10)
                 RageUI.IsVisible(Vestiaire_Orpailleurs, true, true, true, function()
 
                     RageUI.ButtonWithStyle("Reprendre tes vêtements", nil, {RightLabel = "→ "}, true, function(h, a, s)
@@ -378,10 +377,12 @@ end
 
 Citizen.CreateThread(function()
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1077.66, -1972.5, 31.47)
         if distance <= 1.2 then
+            Time = 0
             DrawMarker(2, 1077.66, -1972.5, 31.35,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 0.75, 0.75, 0.75, 206, 185, 117 , 255, false, true, p19, false)
         end
             if distance <= 1.2 then
@@ -394,7 +395,7 @@ Citizen.CreateThread(function()
                 end
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
@@ -528,10 +529,12 @@ end
 
 Citizen.CreateThread(function()
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1074.16, -2010.35, 32.08)
         if distance <= 1.2 then
+            Time = 0
             DrawMarker(2, 1074.16, -2010.35, 32.08,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 0.75, 0.75, 0.75, 206, 185, 117 , 255, false, true, p19, false)
         end
             if distance <= 1.2 then
@@ -544,17 +547,18 @@ Citizen.CreateThread(function()
                 end
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
 Citizen.CreateThread(function()
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1075.28, -1948.14, 31.01-0.94)
         if distance <= 4 then
-            Timer = 0
+            Time = 0
             DrawMarker(25, 1075.28, -1948.14, 31.01-0.94,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 1.75, 1.75, 0.5, 191, 34, 34 , 255, false, true, p19, false)
         end
             if distance <= 2 then
@@ -568,7 +572,7 @@ Citizen.CreateThread(function()
                 end
                 end
             end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
@@ -607,10 +611,12 @@ end
 
 Citizen.CreateThread(function(source)
     while true do
+        local Time = 450
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
             local playerdistance = GetEntityCoords(GetPlayerPed(-1), false)
             local distancetoplayer = Vdist(playerdistance.x, playerdistance.y, playerdistance.z,1082.34, -1960.3, 32.82)
                 if distancetoplayer <= 1.5 then
+                    Time = 0
                             AddTextEntry("veh",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour prendre ton ~b~véhicule~s~.')
                             DisplayHelpTextThisFrame("veh", false)
                             if IsControlJustPressed(1,51) then
@@ -618,7 +624,7 @@ Citizen.CreateThread(function(source)
                             end
                 end
         end 
-        Citizen.Wait(0)
+        Citizen.Wait(Time)
     end
 end)
 
