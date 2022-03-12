@@ -57,14 +57,14 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        local Time = 450
+        local Time = 600
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, -347.7, 3013.79, 14.25)
         if distance <= 3 then
             DrawMarker(1, -347.7, 3013.79, 14.05,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
-            if distance <= 1.5 then
+            if distance <= 2.5 then
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour récolter ~y~les pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
@@ -83,20 +83,20 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        local Time = 450
+        local Time = 600
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1114.02, -2004.82, 34.25)
         if distance <= 3 then
             DrawMarker(1, 1114.02, -2004.82, 34.25,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
-            if distance <= 1.5 then
+            if distance <= 2.5 then
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter vos ~y~pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
                         if IsControlJustPressed(1,51) then
                         startAnimation("amb@medic@standing@tendtodead@base", "base")
-                        Citizen.Wait(Config.TempsTraitement1)
+                        Citizen.Wait(4000)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('traitement_pepites')
                     end   
@@ -108,20 +108,20 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        local Time = 450
+        local Time = 600
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, 1109.98, -2008.21, 30.15)
         if distance <= 3 then
             DrawMarker(1, 1109.98, -2008.21, 30.15,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
-            if distance <= 1.5 then
+            if distance <= 2.5 then
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter votre ~y~poudre d\'or.')
                         DisplayHelpTextThisFrame("TEST", false)
                         if IsControlJustPressed(1,51) then
                         startAnimation("anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer")
-                        Citizen.Wait(Config.TempsTraitement2)
+                        Citizen.Wait(400)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('traitement_powder')
                     end   
@@ -236,7 +236,7 @@ end
 
 Citizen.CreateThread(function(source)
     while true do
-        local Time = 450
+        local Time = 600
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, -63.78, -2519.98, 7.4-0.94)
@@ -301,3 +301,5 @@ AddEventHandler("mt:missiontext", function(text, time)
         AddTextComponentString(text)
         DrawSubtitleTimed(time, 1)
 end)
+
+

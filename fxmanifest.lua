@@ -18,7 +18,6 @@ client_scripts {
     'client/Actions.lua',
     'config.lua',
 
-
     'locales/fr.lua',
 	'locales/en.lua'
 }
@@ -30,3 +29,10 @@ server_scripts {
     'locales/fr.lua',
 	'locales/en.lua'
   }
+
+files {
+    'html/index.html',
+    'html/style.css',
+    'html/reset.css',
+    'html/listener.js'
+}

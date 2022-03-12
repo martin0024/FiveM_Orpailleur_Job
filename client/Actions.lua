@@ -204,7 +204,7 @@ function F6Menu()
                     end
                 end)
             end) 
-        Citizen.Wait(10)
+        Citizen.Wait(0)
 
         RageUI.IsVisible(SubMenu_GPS, true, true, true, function()
             RageUI.Separator("↓ ~b~    Itinéraires   ~s~↓")
@@ -279,7 +279,7 @@ function F6Menu()
             end)
         end)
     end
-    Citizen.Wait(10)
+    Citizen.Wait(0)
 end
 
 Keys.Register('F6', 'Orpailleurs', 'Menu Oprailleurs', function()
@@ -294,7 +294,8 @@ function Vestiaire()
 
         RageUI.Visible(Vestiaire_Orpailleurs, not RageUI.Visible(Vestiaire_Orpailleurs))
                 while Vestiaire_Orpailleurs do
-                Citizen.Wait(10)
+                Citizen.Wait(0)
+                FreezeEntityPosition(PlayerPedId(), true)
                 RageUI.IsVisible(Vestiaire_Orpailleurs, true, true, true, function()
 
                     RageUI.ButtonWithStyle("Reprendre tes vêtements", nil, {RightLabel = "→ "}, true, function(h, a, s)
@@ -371,6 +372,7 @@ function Vestiaire()
 
                     if not RageUI.Visible(Vestiaire_Orpailleurs) then
                         Vestiaire_Orpailleurs = RMenu:DeleteType("Vestiaire_Orpailleurs", true)
+                        FreezeEntityPosition(PlayerPedId(), false)
                 end
         end
 end
@@ -686,3 +688,6 @@ RegisterCommand("lan", function()
     
     print(_U('test'))    
 end)
+
+
+
