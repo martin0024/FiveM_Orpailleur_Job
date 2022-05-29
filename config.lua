@@ -1,3 +1,5 @@
+-- Made by ϻartin#4322 --
+
 
 -- Main Config --
 Config = {}
