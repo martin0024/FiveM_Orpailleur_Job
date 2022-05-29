@@ -314,12 +314,11 @@ function Vestiaire()
                     RageUI.ButtonWithStyle("Tenue Patron", nil, {RightBadge = RageUI.BadgeStyle.Clothes}, true, function(h, a, s)
                         if s then
                             local player_vetement = PlayerPedId()
-                            SetPedComponentVariation(player_vetement, componentId, drawableId, 0)
-                            SetPedComponentVariation(player_vetement, 6, 10, 0) -- Chaussures
-                            SetPedComponentVariation(player_vetement, 4, 25, 0) -- Jambes
-                            SetPedComponentVariation(player_vetement, 11, 20, 0) -- Torse 1
-                            SetPedComponentVariation(player_vetement, 3, 4, 0) -- Bras
-                            SetPedComponentVariation(player_vetement, 8, 4, 0) -- T-shirt
+                            SetPedComponentVariation(player_vetement, 6, Config.Tenue.Boss.Shoes, 0) -- Chaussures
+                            SetPedComponentVariation(player_vetement, 4, Config.Tenue.Boss.Legs, 0) -- Jambes
+                            SetPedComponentVariation(player_vetement, 11, Config.Tenue.Boss.Chest, 0) -- Torse 1
+                            SetPedComponentVariation(player_vetement, 3, Config.Tenue.Boss.Arms, 0) -- Bras
+                            SetPedComponentVariation(player_vetement, 8, Config.Tenue.Boss.Shirt, 0) -- T-shirt
                             RageUI.CloseAll()
                         end
                     end)
@@ -328,12 +327,11 @@ function Vestiaire()
                     RageUI.ButtonWithStyle("Tenue Adjoint", nil, {RightBadge = RageUI.BadgeStyle.Clothes} , true, function(h, a, s)
                         if s then
                             local player_vetement = PlayerPedId()
-                            SetPedComponentVariation(player_vetement, componentId, drawableId, 0)
-                            SetPedComponentVariation(player_vetement, 6, 10, 0) -- Chaussures
-                            SetPedComponentVariation(player_vetement, 4, 25, 0) -- Jambes
-                            SetPedComponentVariation(player_vetement, 11, 10, 0) -- Torse 1
-                            SetPedComponentVariation(player_vetement, 3, 1, 0) -- Bras
-                            SetPedComponentVariation(player_vetement, 8, 3, 0) -- T-shirt
+                            SetPedComponentVariation(player_vetement, 6, Config.Tenue.CoPDG.Shoes, 0) -- Chaussures
+                            SetPedComponentVariation(player_vetement, 4, Config.Tenue.CoPDG.Legs, 0) -- Jambes
+                            SetPedComponentVariation(player_vetement, 11, Config.Tenue.CoPDG.Chest, 0) -- Torse 1
+                            SetPedComponentVariation(player_vetement, 3, Config.Tenue.CoPDG.Arms, 0) -- Bras
+                            SetPedComponentVariation(player_vetement, 8, Config.Tenue.CoPDG.Shirt, 0) -- T-shirt
                             RageUI.CloseAll()
                         end
                     end)
@@ -342,12 +340,11 @@ function Vestiaire()
                     RageUI.ButtonWithStyle("Tenue Manager", nil, {RightBadge = RageUI.BadgeStyle.Clothes}, true, function(h, a, s)
                         if s then
                             local player_vetement = PlayerPedId()
-                            SetPedComponentVariation(player_vetement, componentId, drawableId, 0)
-                            SetPedComponentVariation(player_vetement, 6, 7, 0) -- Chaussures
-                            SetPedComponentVariation(player_vetement, 4, 35, 0) -- Jambes
-                            SetPedComponentVariation(player_vetement, 11, 242, 0) -- Torse 1
-                            SetPedComponentVariation(player_vetement, 3, 0, 0) -- Bras
-                            SetPedComponentVariation(player_vetement, 8, 15, 0) -- T-shirt
+                            SetPedComponentVariation(player_vetement, 6, Config.Tenue.Manager.Shoes, 0) -- Chaussures
+                            SetPedComponentVariation(player_vetement, 4, Config.Tenue.Manager.Legs, 0) -- Jambes
+                            SetPedComponentVariation(player_vetement, 11, Config.Tenue.Manager.Chest, 0) -- Torse 1
+                            SetPedComponentVariation(player_vetement, 3, Config.Tenue.Manager.Arms, 0) -- Bras
+                            SetPedComponentVariation(player_vetement, 8, Config.Tenue.Manager.Shirt, 0) -- T-shirt
                             RageUI.CloseAll()
                         end
                     end)
@@ -356,13 +353,12 @@ function Vestiaire()
                     RageUI.ButtonWithStyle("Tenue Employé", nil, {RightBadge = RageUI.BadgeStyle.Clothes}, true, function(h, a, s)
                         if s then
                             local player_vetement = PlayerPedId()
-                            SetPedComponentVariation(player_vetement, componentId, drawableId, 0)
-                            SetPedComponentVariation(player_vetement, 6, 25, 0) -- Chaussures
-                            SetPedComponentVariation(player_vetement, 4, 9, 0) -- Jambes
-                            SetPedComponentVariation(player_vetement, 11, 97, 0) -- Torse 1
-                            SetPedComponentVariation(player_vetement, 3, 0, 0) -- Bras
-                            SetPedComponentVariation(player_vetement, 8, 15, 0) -- T-shirt
-                            SetPedComponentVariation(player_vetement, 5, 41, 0) -- Sac
+                            SetPedComponentVariation(player_vetement, 6, Config.Tenue.Worker.Shoes, 0) -- Chaussures
+                            SetPedComponentVariation(player_vetement, 4, Config.Tenue.Worker.Legs, 0) -- Jambes
+                            SetPedComponentVariation(player_vetement, 11, Config.Tenue.Worker.Chest, 0) -- Torse 1
+                            SetPedComponentVariation(player_vetement, 3, Config.Tenue.Worker.Arms, 0) -- Bras
+                            SetPedComponentVariation(player_vetement, 8, Config.Tenue.Worker.Shirt, 0) -- T-shirt
+                            SetPedComponentVariation(player_vetement, 5, Config.Tenue.Worker.Bag, 0) -- Sac
 
                             RageUI.CloseAll()
                         end
