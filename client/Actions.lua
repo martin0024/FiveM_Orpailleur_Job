@@ -198,8 +198,7 @@ function F6Menu()
                         end
                         if (GetOnscreenKeyboardResult()) then
                             local result = GetOnscreenKeyboardResult()
-                            print(result)    
-                            TriggerServerEvent('Annonces_Perso', result)  
+                            TriggerServerEvent('Annonces_Perso', result)
                         end
                     end
                 end)
@@ -216,10 +215,8 @@ function F6Menu()
                         TimeToGo(-347.7, 3013.79, 14.25)
                         local time = nil
                         time = round(TimeToGo(-347.7, 3013.79, 14.25), 0)
-                        print('Time =', time)
                         local time_minutes = nil
                         time_minutes = round(time / 60, 1)
-                        print('Time en minutes =', time_minutes)
                         RageUI.Text({ message = "Temps estimé : ~r~".. time_minutes .. " ~w~minutes" , time_display = 10000 })
                     else
                         sendNotification('~r~ Veuillez monter dans un véhicule.')
@@ -681,7 +678,6 @@ end
 
 
 RegisterCommand("lan", function()
-    
     print(_U('test'))    
 end)
 

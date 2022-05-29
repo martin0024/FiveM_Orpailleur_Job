@@ -180,7 +180,6 @@ AddEventHandler("vente_lingots", function()
     end)
     if societyAccount ~= nil then
         societyAccount.addMoney(Totalmoney)
-        print(Totalmoney)
         TriggerClientEvent('esx:showNotification', source, "Vous avez vendu ".. lingots .." ~y~lingots ~w~ pour ~g~".. Totalmoney .."$." )
 
     end
