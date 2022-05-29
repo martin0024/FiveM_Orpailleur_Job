@@ -1,3 +1,5 @@
+-- Insert all the sql into your database
+
 INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
 ('society_orpailleur', 'Orpailleur', 1);
 
