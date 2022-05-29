@@ -677,9 +677,3 @@ end
 end
 
 
-RegisterCommand("lan", function()
-    print(_U('test'))    
-end)
-
-
-
