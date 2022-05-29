@@ -15,7 +15,6 @@ local SettingsList = {
     Text = { X = 403, Y = 3, Scale = 0.35 },
 }
 
----List
 ---@param Label string
 ---@param Items table
 ---@param Index number

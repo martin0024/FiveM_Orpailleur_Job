@@ -1,7 +1,6 @@
 ---@type table
 RageUI.LastControl = false
 
----IsMouseInBounds
 ---@param X number
 ---@param Y number
 ---@param Width number

@@ -4,6 +4,8 @@ local SettingsButton = {
     Text = { X = 8, Y = 3, Scale = 0.33 },
 }
 
+--Function
+
 function RageUI.Separator(Label)
     local CurrentMenu = RageUI.CurrentMenu
     if CurrentMenu ~= nil then

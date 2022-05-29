@@ -14,7 +14,6 @@ local SettingsProgress = {
     Height = 60
 }
 
----Progress
 ---@param Label string
 ---@param ProgressStart number
 ---@param ProgressMax number

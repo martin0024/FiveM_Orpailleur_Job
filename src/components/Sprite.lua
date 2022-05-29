@@ -1,6 +1,5 @@
 ---RenderSprite
 ---
---- Reference : https://github.com/iTexZoz/NativeUILua_Reloaded/blob/master/UIElements/Sprite.lua#L90
 ---
 ---@param TextureDictionary string
 ---@param TextureName string

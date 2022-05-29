@@ -18,7 +18,6 @@ local SettingsSlider = {
 }
 
 
----Slider
 ---@param Label string
 ---@param ProgressStart number
 ---@param ProgressMax number

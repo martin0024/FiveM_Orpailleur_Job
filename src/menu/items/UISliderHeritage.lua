@@ -19,7 +19,6 @@ for i = 1, 10 do
     table.insert(Items, i)
 end
 
----UISliderHeritage
 ---
 ---
 ---

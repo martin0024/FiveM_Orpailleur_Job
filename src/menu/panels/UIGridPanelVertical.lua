@@ -8,7 +8,6 @@ local GridPanelVertical = {
     },
 }
 
----GridPanelVertical
 ---@param Y number
 ---@param TopText string
 ---@param BottomText string

@@ -13,7 +13,6 @@ local Statistics = {
     }
 }
 
----StatisticPanel
 ---@param Percent number
 ---@param Text string
 ---@param Index number

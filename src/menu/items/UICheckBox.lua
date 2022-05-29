@@ -11,7 +11,7 @@ local SettingsButton = {
 ---@type table
 local SettingsCheckbox = {
     Dictionary = "commonmenu", Textures = {
-        "shop_box_blankb", -- 1
+        "shop_box_blankb",
         "shop_box_tickb", -- 2
         "shop_box_blank", -- 3
         "shop_box_tick", -- 4

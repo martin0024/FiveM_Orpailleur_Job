@@ -1,5 +1,4 @@
 RageUI.BadgeStyle = {
-    -- DEFAULT BADGE
     None = function()
         return {
             BadgeTexture = "",

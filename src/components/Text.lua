@@ -1,5 +1,4 @@
 
----MeasureStringWidth
 ---
 --- Reference : Frazzle <3
 ---

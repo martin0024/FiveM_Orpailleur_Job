@@ -8,7 +8,6 @@ local SettingsButton = {
     SelectedSprite = { Dictionary = "commonmenu", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
 }
 
----Button
 ---@param Label string
 ---@param Description string
 ---@param Enabled boolean

@@ -6,7 +6,6 @@ local TextPanels = {
     },
 }
 
----BoutonPanel
 ---@param LeftText string
 ---@param RightText string
 ---@public

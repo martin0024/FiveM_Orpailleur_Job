@@ -1,6 +1,5 @@
 ---RenderRectangle
 ---
---- Reference : https://github.com/iTexZoz/NativeUILua_Reloaded/blob/master/UIElements/UIResRectangle.lua#L84
 ---
 ---@param X number
 ---@param Y number

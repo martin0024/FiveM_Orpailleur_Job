@@ -22,7 +22,6 @@ local SettingsSlider = {
     RightArrow = { Dictionary = "commonmenutu", Texture = "arrowright", X = 400, Y = 11.5, Width = 15, Height = 15 },
 }
 
----Slider
 ---@param Label string
 ---@param ProgressStart number
 ---@param ProgressMax number

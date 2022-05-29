@@ -8,7 +8,6 @@ local Percentage = {
     },
 }
 
----PercentagePanel
 ---@param Percent number
 ---@param HeaderText string
 ---@param MinText string

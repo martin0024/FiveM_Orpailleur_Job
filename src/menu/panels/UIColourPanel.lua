@@ -8,7 +8,6 @@ local Colour = {
     SelectedRectangle = { X = 15, Y = 47, Width = 44.5, Height = 8 },
 }
 
----ColourPanel
 ---@param Title string
 ---@param Colours thread
 ---@param MinimumIndex number
