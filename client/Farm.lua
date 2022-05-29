@@ -61,20 +61,27 @@ Citizen.CreateThread(function()
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'orpailleurs' then
         local player = GetEntityCoords(GetPlayerPed(-1), false)
         local distance = Vdist(player.x, player.y, player.z, -347.7, 3013.79, 14.25)
+
         if distance <= 3 then
             DrawMarker(1, -347.7, 3013.79, 14.05,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
             if distance <= 2.5 then
-                Time = 0   
+                Time = 0
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour récolter ~y~les pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
-                        if IsControlJustPressed(1,51) then
+
+
+                if IsPedInAnyVehicle(PlayerPedId(), true) then
+                    sendNotification('~r~ Tu ne peux pas recolter dans un véhicule.')
+                else
+                    if IsControlJustPressed(1,51) then
                         startScenario('world_human_gardener_plant')
-                        Citizen.Wait(4000)
+                        Citizen.Wait(Config.timer.FarmRecolte)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
-                        Citizen.Wait(2000)
                         TriggerServerEvent('recolte_pepites')
-                    end   
+                    end
+
+                    end
                 end
             end 
         Citizen.Wait(Time)
@@ -94,12 +101,17 @@ Citizen.CreateThread(function()
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter vos ~y~pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
+
+                if IsPedInAnyVehicle(PlayerPedId(), true) then
+                    sendNotification('~r~ Tu ne peux pas recolter dans un véhicule.')
+                else
                         if IsControlJustPressed(1,51) then
                         startAnimation("amb@medic@standing@tendtodead@base", "base")
-                        Citizen.Wait(4000)
+                        Citizen.Wait(Config.timer.FarmTraitement1)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('traitement_pepites')
-                    end   
+                    end
+                    end
                 end
             end 
         Citizen.Wait(Time)
@@ -119,12 +131,17 @@ Citizen.CreateThread(function()
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter votre ~y~poudre d\'or.')
                         DisplayHelpTextThisFrame("TEST", false)
+
+                if IsPedInAnyVehicle(PlayerPedId(), true) then
+                    sendNotification('~r~ Tu ne peux pas recolter dans un véhicule.')
+                else
                         if IsControlJustPressed(1,51) then
                         startAnimation("anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer")
-                        Citizen.Wait(400)
+                        Citizen.Wait(Config.timer.FarmTraitement2)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('traitement_powder')
-                    end   
+                    end
+                    end
                 end
             end 
         Citizen.Wait(Time)
@@ -252,7 +269,7 @@ Citizen.CreateThread(function(source)
                             RageUI.Text({ message = "~r~[Manager] ~w~Je peux te faire un bon prix, pour des ~y~lingots d\'or.", time_display = 10000 })
                             Citizen.Wait(5000)
                             ESX.TriggerServerCallback("orpailleur_job:getLingots", function(result) 
-                                if result >= 100 then
+                                if result >= Config.Farms.Seller.minlingots then
                                     RageUI.Text({ message = "~r~[Manager] ~w~Je vois que tu as déjà la marchandise sur toi !", time_display = 10000 })
                                     Citizen.Wait(3000)
                                     RageUI.Text({ message = "~r~[Manager] ~w~J'appelle ~r~le transporteur.", time_display = 10000 })

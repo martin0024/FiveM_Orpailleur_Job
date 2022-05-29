@@ -79,7 +79,7 @@ AddEventHandler('recolte_pepites', function()
     if nbitemdansinventaire >= limiteitem then
         TriggerClientEvent('esx:showNotification', source, "Tu ne peux plus porter de ~y~ pépites.")
     else
-        local random =  math.random(1,4)
+        local random =  math.random(Config.Farm1Random.Min,Config.Farm1Random.Max)
         xPlayer.addInventoryItem(item, random)
         TriggerClientEvent('esx:showNotification', source, "~y~+"..random.."~y~ pépites.")
 
@@ -97,11 +97,11 @@ AddEventHandler('traitement_pepites', function()
 
     if powder > 100 then
         TriggerClientEvent('esx:showNotification', source, 'Tu ne peux plus porter de ~y~ poudres d\'or.')
-    elseif pepites < 5 then
+    elseif pepites < Config.Farms.Farm2.pepites then
         TriggerClientEvent('esx:showNotification', source, 'Tu n\'as plus assez de ~y~pépites ~w~pour les fondres.')
     else
-        xPlayer.removeInventoryItem('pepites', 2)
-        xPlayer.addInventoryItem('powder', 2)    
+        xPlayer.removeInventoryItem('pepites', Config.Farms.Farm2.pepites)
+        xPlayer.addInventoryItem('powder', Config.Farms.Farm2.poudre)
     end
 end)
 
@@ -113,13 +113,13 @@ AddEventHandler('traitement_powder', function()
     local powder = xPlayer.getInventoryItem('powder').count
     local lingot = xPlayer.getInventoryItem('lingot').count
 
-    if lingot > 50 then
+    if lingot > 100 then
         TriggerClientEvent('esx:showNotification', source, 'Ton invetaire est ~r~plein~w~...de ~y~lingots ~w~!')
-    elseif powder < 3 then
+    elseif powder < Config.Farms.Farm3.poudre then
         TriggerClientEvent('esx:showNotification', source, 'Tu n\'as plus assez de ~y~poudre ~w~pour traiter.')
     else
-        xPlayer.removeInventoryItem('powder', 3)
-        xPlayer.addInventoryItem('lingot', 3)    
+        xPlayer.removeInventoryItem('powder', Config.Farms.Farm3.poudre)
+        xPlayer.addInventoryItem('lingot', Config.Farms.Farm3.lingots)
         TriggerClientEvent('esx:showNotification', source, "~y~+5~y~ lingots.")
 
     end
@@ -128,7 +128,7 @@ end)
 RegisterNetEvent('venteorpa')
 AddEventHandler('venteorpa', function()
 
-    local money = math.random(30,30)
+    local money = math.random(Config.Farms.Seller.onelingotprice,Config.Farms.Seller.onelingotprice)
     local xPlayer = ESX.GetPlayerFromId(source)
     local societyAccount = nil
     local lingo = 0
@@ -147,7 +147,7 @@ AddEventHandler('venteorpa', function()
         lingot_count = 0
         return
     elseif lingot_count == 1 then
-            local money = math.random(30,30)
+            local money = math.random(Config.Farms.Seller.onelingotprice,Config.Farms.Seller.onelingotprice)
             xPlayer.removeInventoryItem('lingo', 1)
             local societyAccount = nil
 
@@ -165,7 +165,7 @@ AddEventHandler('venteorpa', function()
 RegisterNetEvent("vente_lingots")
 AddEventHandler("vente_lingots", function()
 
-    local money = math.random(20,30)
+    local money = math.random(Config.Farms.Seller.onelingotprice,Config.Farms.Seller.onelingotprice)
     local xPlayer = ESX.GetPlayerFromId(source)
     local societyAccount = nil
     local lingots = xPlayer.getInventoryItem('lingot').count
