@@ -66,17 +66,22 @@ Citizen.CreateThread(function()
             DrawMarker(1, -347.7, 3013.79, 14.05,  0.0, 0.0, 0.0, 0.0,0.0,0.0, 2.5, 2.5, 0.5, 206, 185, 117 , 255, false, true, p19, true)
             end
             if distance <= 2.5 then
-                Time = 0   
+                Time = 0
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour récolter ~y~les pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
 
 
-                        if IsControlJustPressed(1,51) then
+                if IsPedInAnyVehicle(PlayerPedId(), true) then
+                    sendNotification('~r~ Tu ne peux pas recolter dans un véhicule.')
+                else
+                    if IsControlJustPressed(1,51) then
                         startScenario('world_human_gardener_plant')
                         Citizen.Wait(Config.timer.FarmRecolte)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('recolte_pepites')
-                    end   
+                    end
+
+                    end
                 end
             end 
         Citizen.Wait(Time)
@@ -96,12 +101,17 @@ Citizen.CreateThread(function()
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter vos ~y~pépites.')
                         DisplayHelpTextThisFrame("TEST", false)
+
+                if IsPedInAnyVehicle(PlayerPedId(), true) then
+                    sendNotification('~r~ Tu ne peux pas recolter dans un véhicule.')
+                else
                         if IsControlJustPressed(1,51) then
                         startAnimation("amb@medic@standing@tendtodead@base", "base")
                         Citizen.Wait(Config.timer.FarmTraitement1)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('traitement_pepites')
-                    end   
+                    end
+                    end
                 end
             end 
         Citizen.Wait(Time)
@@ -121,12 +131,17 @@ Citizen.CreateThread(function()
                 Time = 0   
                         AddTextEntry("TEST",'Appuyer sur ~INPUT_CONTEXT~ ~s~ pour traiter votre ~y~poudre d\'or.')
                         DisplayHelpTextThisFrame("TEST", false)
+
+                if IsPedInAnyVehicle(PlayerPedId(), true) then
+                    sendNotification('~r~ Tu ne peux pas recolter dans un véhicule.')
+                else
                         if IsControlJustPressed(1,51) then
                         startAnimation("anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer")
                         Citizen.Wait(Config.timer.FarmTraitement2)
                         ClearPedTasksImmediately(GetPlayerPed(-1))
                         TriggerServerEvent('traitement_powder')
-                    end   
+                    end
+                    end
                 end
             end 
         Citizen.Wait(Time)
